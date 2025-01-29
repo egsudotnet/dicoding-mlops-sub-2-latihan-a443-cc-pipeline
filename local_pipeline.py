@@ -72,3 +72,5 @@ if __name__ == "__main__":
 # cd a443-cc-pipeline
 # cd "dicoding-mlops-sub-2/latihan-dicoding/a443-cc-pipeline"
 
+# Poer shell heroku create cc-prediction
+# Conda jalankan env
