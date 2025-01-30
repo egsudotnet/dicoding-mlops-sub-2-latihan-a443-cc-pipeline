@@ -72,3 +72,22 @@ if __name__ == "__main__":
 # cd a443-cc-pipeline
 # cd "dicoding-mlops-sub-2/latihan-dicoding/a443-cc-pipeline"
 
+# 1. Install Python 3.9.21
+# uv python install 3.9.21
+# 2. Buat Virtual Env
+# uv venv --python 3.9.21
+# 3. Aktifin env
+# .venv\Scripts\activate
+# 4. Install library 
+# uv pip install jupyter scikit-learn tensorflow tfx==1.11 flask joblib
+# 5. Install pip & turunin setuptools
+# uv pip install pip setuptools==70
+
+# conda create -n churn3 python=3.9.21
+# conda activate churn3
+# uv pip install jupyter scikit-learn tensorflow tfx==1.11 flask joblib
+# # # # pip install -r requirements.txt
+
+
+# -================================
+# heroku container:login
