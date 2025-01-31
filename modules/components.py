@@ -93,20 +93,49 @@ def init_components(
         model_blessing = Channel(type=ModelBlessing)
     ).with_id('Latest_blessed_model_resolver')
     
-    slicing_specs=[
-        tfma.SlicingSpec(), 
-        tfma.SlicingSpec(feature_keys=[
-            "gender",
-            "Partner"
-        ])
-    ]
+    # # # slicing_specs=[
+    # # #     tfma.SlicingSpec(), 
+    # # #     tfma.SlicingSpec(feature_keys=[
+    # # #         "text",
+    # # #     ])
+    # # # ]
  
-    metrics_specs = [
-        tfma.MetricsSpec(metrics=[
+    # # # metrics_specs = [
+    # # #     tfma.MetricsSpec(metrics=[
+    # # #             tfma.MetricConfig(class_name='AUC'),
+    # # #             tfma.MetricConfig(class_name="Precision"),
+    # # #             tfma.MetricConfig(class_name="Recall"),
+    # # #             tfma.MetricConfig(class_name="ExampleCount"),
+    # # #             tfma.MetricConfig(class_name='BinaryAccuracy',
+    # # #                 threshold=tfma.MetricThreshold(
+    # # #                     value_threshold=tfma.GenericValueThreshold(
+    # # #                         lower_bound={'value':0.5}),
+    # # #                     change_threshold=tfma.GenericChangeThreshold(
+    # # #                         direction=tfma.MetricDirection.HIGHER_IS_BETTER,
+    # # #                         absolute={'value':0.0001})
+    # # #                     )
+    # # #             )
+    # # #         ])
+    # # # ]
+ 
+    # # # eval_config = tfma.EvalConfig(
+    # # #     model_specs=[tfma.ModelSpec(label_key='label')],
+    # # #     slicing_specs=slicing_specs,
+    # # #     metrics_specs=metrics_specs
+    # # # )
+    
+    eval_config = tfma.EvalConfig(
+        model_specs=[tfma.ModelSpec(label_key='label')],
+        slicing_specs=[tfma.SlicingSpec()],
+        metrics_specs=[
+            tfma.MetricsSpec(metrics=[
+                
+                tfma.MetricConfig(class_name='ExampleCount'),
                 tfma.MetricConfig(class_name='AUC'),
-                tfma.MetricConfig(class_name="Precision"),
-                tfma.MetricConfig(class_name="Recall"),
-                tfma.MetricConfig(class_name="ExampleCount"),
+                tfma.MetricConfig(class_name='FalsePositives'),
+                tfma.MetricConfig(class_name='TruePositives'),
+                tfma.MetricConfig(class_name='FalseNegatives'),
+                tfma.MetricConfig(class_name='TrueNegatives'),
                 tfma.MetricConfig(class_name='BinaryAccuracy',
                     threshold=tfma.MetricThreshold(
                         value_threshold=tfma.GenericValueThreshold(
@@ -117,14 +146,10 @@ def init_components(
                         )
                 )
             ])
-    ]
- 
-    eval_config = tfma.EvalConfig(
-        model_specs=[tfma.ModelSpec(label_key='Churn')],
-        slicing_specs=slicing_specs,
-        metrics_specs=metrics_specs
-    )
+        ]
     
+    )
+
     evaluator = Evaluator(
         examples=example_gen.outputs['examples'],
         model=trainer.outputs['model'],

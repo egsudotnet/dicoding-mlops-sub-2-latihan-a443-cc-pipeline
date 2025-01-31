@@ -6,12 +6,12 @@ from absl import logging
 from tfx.orchestration import metadata, pipeline
 from tfx.orchestration.beam.beam_dag_runner import BeamDagRunner
  
-PIPELINE_NAME = "customer-churn-pipeline"
+PIPELINE_NAME = "egihsugiatna-pipeline"
  
 # pipeline inputs
 DATA_ROOT = "data"
-TRANSFORM_MODULE_FILE = "modules/customer_churn_transform.py"
-TRAINER_MODULE_FILE = "modules/customer_churn_trainer.py"
+TRANSFORM_MODULE_FILE = "modules/stress_transform.py"
+TRAINER_MODULE_FILE = "modules/stress_trainer.py"
 # requirement_file = os.path.join(root, "requirements.txt")
  
 # pipeline outputs

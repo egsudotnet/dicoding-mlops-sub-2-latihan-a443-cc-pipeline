@@ -7,12 +7,12 @@ from absl import logging
 from tfx.orchestration import metadata, pipeline
 from tfx.orchestration.beam.beam_dag_runner import BeamDagRunner
  
-PIPELINE_NAME = "customer-churn-pipeline"
+PIPELINE_NAME = "egihsugiatna-pipeline"
  
 # pipeline inputs
 DATA_ROOT = "data"
-TRANSFORM_MODULE_FILE = "modules/customer_churn_transform.py"
-TRAINER_MODULE_FILE = "modules/customer_churn_trainer.py"
+TRANSFORM_MODULE_FILE = "modules/stress_transform.py"
+TRAINER_MODULE_FILE = "modules/stress_trainer.py"
 # requirement_file = os.path.join(root, "requirements.txt")
  
 # pipeline outputs
@@ -63,6 +63,14 @@ if __name__ == "__main__":
     pipeline = init_local_pipeline(components, pipeline_root)
     BeamDagRunner().run(pipeline=pipeline)
 
+
+# conda create -n stress python=3.9.12
+# conda activate stress
+# uv pip install jupyter scikit-learn tensorflow tfx==1.11 flask joblib
+# uv pip install pip setuptools==70
+# cd "dicoding-mlops-sub-2\dicoding-mlops-sub-2"
+
+
 # 4. Untuk menjalankan berkas local_pipeline.py, tulislah perintah berikut pada terminal atau windows PowerShell.
 # python .\local_pipeline.py 
 
@@ -71,6 +79,8 @@ if __name__ == "__main__":
 # cd latihan-dicoding
 # cd a443-es-pipeline
 # cd "dicoding-mlops-sub-2/latihan-dicoding/a443-es-pipeline"
+
+
 
 # cd "\Programming\dicoding\Machine Learning\mlops\dicoding-mlops-sub-2\latihan-dicoding\a443-es-pipeline"
 
@@ -89,11 +99,12 @@ if __name__ == "__main__":
 # 5. Install pip & turunin setuptools
 # uv pip install pip setuptools==70
 
-# conda create -n churn3 python=3.9.21
-# conda activate churn3
+# conda create -n stress3 python=3.9.21
+# conda activate stress3
 # uv pip install jupyter scikit-learn tensorflow tfx==1.11 flask joblib
 # # # # pip install -r requirements.txt
 
+# cd "dicoding-mlops-sub-2\dicoding-mlops-sub-2"
 
 # -================================
 # heroku container:login 
@@ -113,9 +124,21 @@ if __name__ == "__main__":
 
 # build image
 # heroku stack:set container -a es-prediction
+# docker push registry.heroku.com/es-prediction/web
+
 
 # heroku container:push web -a es-prediction
 # heroku container:release web -a es-prediction
 
 
 # docker tag a443ccpipeline:latest registry.heroku.com/es-prediction/web
+
+
+# localhost:8501/v1/models/saved_model/metadata
+
+# docker build -t cc-monitoring .\monitoring\
+# docker run -p 9090:9090 cc-monitoring  
+# http://localhost:9090/
+
+# bool xla_cpu_compilation_enabled = true;
+# bool xla_gpu_compilation_enabled = true;
