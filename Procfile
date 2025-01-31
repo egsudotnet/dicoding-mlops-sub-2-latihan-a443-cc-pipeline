@@ -1,0 +1,1 @@
+web: tensorflow_model_server --port=8500 --rest_api_port=${PORT} --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME} --xla_cpu_compilation_enabled=true --xla_gpu_compilation_enabled=true --num_load_threads=1 --num_unload_threads=1 --tensorflow_session_parallelism=1 --enable_profiler=true --monitoring_config_file=/path/to/your/monitoring.config

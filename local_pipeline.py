@@ -142,3 +142,37 @@ if __name__ == "__main__":
 
 # bool xla_cpu_compilation_enabled = true;
 # bool xla_gpu_compilation_enabled = true;
+
+
+
+# =====================================
+# =====================================
+# heroku login
+# heroku create es-stress 
+# heroku container:login
+
+# # # build image
+# heroku stack:set container -a es-stress 
+
+
+# heroku container:push web -a es-stress
+# heroku container:release web -a es-stress
+
+
+# docker tag a443ccpipeline:latest registry.heroku.com/es-stress/web
+
+
+# localhost:8501/v1/models/saved_model/metadata
+
+# docker build -t cc-monitoring .\monitoring\
+# docker run -p 9090:9090 cc-monitoring  
+# http://localhost:9090/
+
+# bool xla_cpu_compilation_enabled = true;
+# bool xla_gpu_compilation_enabled = true;
+
+# https://es-stress-9bb91864c40c.herokuapp.com/v1/models/stress-model/metadata
+
+ 
+# web: tensorflow_model_server --port=8500 --rest_api_port=${PORT} --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME} --xla_cpu_compilation_enabled=false --xla_gpu_compilation_enabled=false --num_load_threads=1 --num_unload_threads=1 --tensorflow_session_parallelism=1
+

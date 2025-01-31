@@ -1,8 +1,8 @@
 FROM tensorflow/serving:latest
  
-COPY ./output/serving_model /models/cc-model
+COPY ./output/serving_model /models/stress-model
 COPY ./config /model_config
-ENV MODEL_NAME=cc-model
+ENV MODEL_NAME=stress-model
  
 ENV MONITORING_CONFIG="/model_config/prometheus.config"
 ENV PORT=8501
