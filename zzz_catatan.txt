@@ -1,0 +1,113 @@
+# conda remove -n stress --all
+# conda activate stress
+# uv pip install jupyter scikit-learn tensorflow tfx==1.11 flask joblib
+# uv pip install pip setuptools==70
+# cd "dicoding-mlops-sub-2\dicoding-mlops-sub-2"
+# cd "Programming\dicoding\Machine Learning\mlops\dicoding-mlops-sub-2\latihan-dicoding\a443-cc-pipeline"
+
+# conda create -n stress python=3.9.21
+
+# 4. Untuk menjalankan berkas local_pipeline.py, tulislah perintah berikut pada terminal atau windows PowerShell.
+# python .\local_pipeline.py 
+
+
+# cd "dicoding-mlops-sub-2"
+# cd latihan-dicoding
+# cd a443-es-pipeline
+# cd "dicoding-mlops-sub-2/latihan-dicoding/a443-es-pipeline"
+
+D:\Programming\dicoding\Machine Learning\mlops\dicoding-mlops-sub-2\latihan-dicoding\a443-cc-pipeline
+
+# cd "\Programming\dicoding\Machine Learning\mlops\dicoding-mlops-sub-2\latihan-dicoding\a443-es-pipeline"
+
+
+# Poer shell heroku create es-prediction
+# Conda jalankan env
+ 
+# 1. Install Python 3.9.21
+# uv python install 3.9.21
+# 2. Buat Virtual Env
+# uv venv --python 3.9.21
+# 3. Aktifin env
+# .venv\Scripts\activate
+# 4. Install library 
+# uv pip install jupyter scikit-learn tensorflow tfx==1.11 flask joblib
+# 5. Install pip & turunin setuptools
+# uv pip install pip setuptools==70
+
+# conda create -n stress3 python=3.9.21
+# conda activate stress3
+# uv pip install jupyter scikit-learn tensorflow tfx==1.11 flask joblib
+# # # # pip install -r requirements.txt
+
+# cd "dicoding-mlops-sub-2\dicoding-mlops-sub-2"
+
+# -================================
+# heroku container:login 
+# heroku stack:set container -a es-prediction
+# heroku container:push web -a es-prediction
+# heroku container:release web -a es-prediction
+
+
+# heroku container:login
+# heroku container:push web -a es-prediction
+# heroku container:release web -a es-prediction
+
+# =====================================
+# heroku login
+# heroku create es-stress 
+# heroku container:login
+
+# build image
+# heroku stack:set container -a es-stress
+# docker push registry.heroku.com/es-stress/web
+
+
+# heroku container:push web -a es-stress
+# heroku container:release web -a es-stress
+
+
+# docker tag a443ccpipeline:latest registry.heroku.com/es-stress/web
+
+
+# localhost:8501/v1/models/saved_model/metadata
+
+# docker build -t cc-monitoring .\monitoring\
+# docker run -p 9090:9090 cc-monitoring  
+# http://localhost:9090/
+
+# bool xla_cpu_compilation_enabled = true;
+# bool xla_gpu_compilation_enabled = true;
+
+
+
+# =====================================
+# =====================================
+# heroku login
+# heroku create es-stress-100
+# heroku container:login
+
+# # # build image
+# heroku stack:set container -a es-stress-100
+
+
+# heroku container:push web -a es-stress-100
+# heroku container:release web -a es-stress-100
+
+
+# docker tag a443ccpipeline:latest registry.heroku.com/es-stress/web
+
+
+# http://localhost:8501/v1/models/stress-model/metadata
+
+# docker build -t cc-monitoring .\monitoring\
+# docker run -p 9090:9090 cc-monitoring  
+# http://localhost:9090/
+
+# bool xla_cpu_compilation_enabled = true;
+# bool xla_gpu_compilation_enabled = true;
+
+# https://es-stress-9bb91864c40c.herokuapp.com/v1/models/stress-model/metadata
+
+ 
+# web: tensorflow_model_server --port=8500 --rest_api_port=${PORT} --model_name=${MODEL_NAME} --model_base_path=${MODEL_BASE_PATH}/${MODEL_NAME} --xla_cpu_compilation_enabled=false --xla_gpu_compilation_enabled=false --num_load_threads=1 --num_unload_threads=1 --tensorflow_session_parallelism=1
