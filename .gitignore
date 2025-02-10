@@ -133,3 +133,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/dicoding-mlops-sub-2/v17/.suo
+.vs/slnx.sqlite
+.gitignore
+.vs/slnx.sqlite
